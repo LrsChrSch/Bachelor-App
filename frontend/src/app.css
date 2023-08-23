@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--accent: var(--one);
+
+	--one: 80 70 230;
+	--two: 40 105 130;
+	--three: 215 130 125;
+	--four: 225 30 70;
+	--five: 235 155 50;
+	--six: 35 195 95;
+	--human: 145 120 170;
+
+	--neutral-light: 9 9 11;
+	--neutral-base: 82 82 82;
+	--neutral-dark: 250 245 235;
+
+	--scroll-offset: 380px;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--neutral-light: 245 245 244;
+		--neutral-base: 154 154 154;
+		--neutral-dark: 9 9 11;
+
+		--one: 100 100 240;
+		--two: 155 205 215;
+		--three: 235 155 150;
+		--four: 235 110 145;
+		--five: 250 165 85;
+		--six: 100 220 145;
+		--human: 200 165 230;
+	}
+}
+
+::-webkit-scrollbar {
+	width: 2px;
+}
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+::-webkit-scrollbar-thumb {
+	background-color: #404040;
+	border-radius: 20px;
+	border: transparent;
+}
+
+@layer base {
+	body {
+		@apply bg-neutral-dark text-neutral-light font-sans selection:bg-accent overflow-hidden selection:text-neutral-dark;
+	}
+
+	h1 {
+		@apply text-4xl xs:text-6xl sm:text-6xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-accent mb-7 font-sans leading-none overflow-visible hyphens-auto lg:hyphens-none text-justify;
+	}
+
+	h2,
+	article h1 {
+		@apply text-3xl xs:text-4xl font-bold mb-4 text-accent font-sans;
+	}
+
+	h3 {
+		@apply text-xl font-bold leading-tight text-accent w-fit mb-6 font-sans;
+	}
+
+	p {
+		@apply hyphens-auto;
+	}
+
+	button {
+		@apply font-condensed font-medium focus-state;
+	}
+
+	a {
+		@apply focus-state;
+	}
+
+	details > summary {
+		@apply list-outside list-decimal focus-state;
+	}
+
+	details summary::-webkit-details-marker {
+		display: none;
+	}
+}
+
+@layer utilities {
+	.border-dots {
+		@apply border-neutral-base border-dotted;
+	}
+
+	.focus-state {
+		@apply focus:ring-1 rounded-sm ring-accent ring-offset-2 ring-offset-neutral-dark !outline-none  scroll-mt-[var(--scroll-offset)] scroll-mb-8;
+	}
+}

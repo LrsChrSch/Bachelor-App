@@ -1,0 +1,10 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Reply">
+<mask id="mask0_32_530" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+<rect id="Bounding box" width="24" height="24" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_32_530)">
+<path id="add_comment" d="M10.925 13.75H13.075V10.7H16.125V8.55002H13.075V5.50002H10.925V8.55002H7.87503V10.7H10.925V13.75ZM1.70003 22.0884V1.39999H22.3V17.8999H5.8885L1.70003 22.0884ZM4.54235 15.75H20.15V3.54999H3.85V16.4423L4.54235 15.75Z" fill="#09090B"/>
+</g>
+</g>
+</svg>

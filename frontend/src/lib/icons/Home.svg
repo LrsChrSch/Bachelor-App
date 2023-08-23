@@ -1,0 +1,10 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Home">
+<mask id="mask0_22_790" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+<rect id="Bounding box" width="24" height="24" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_22_790)">
+<path id="bungalow" d="M7.02502 20.825V14.8769L6.20195 16.1538L4.37507 15.0231L12 3.31738L19.6153 15.0231L17.7884 16.1538L16.975 14.8865V20.825H7.02502ZM9.175 18.675H10.7904V15.7904H13.2096V18.675H14.825V11.6096L12 7.25001L9.175 11.6V18.675ZM10.7904 14.325V11.9058H13.2096V14.325H10.7904Z" fill="#09090B"/>
+</g>
+</g>
+</svg>
