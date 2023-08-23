@@ -19,3 +19,7 @@ https://drive.google.com/file/d/1AgXs7wMjD3SVlWuRuRHuXHrGYwN9FYCk/view?usp=shari
   | Optimizer               | AdamW8bit     |
   | Base Model              | SDXL-Base-1.0 |
   | Precision               | bf16          |
+
+- AI requirements can be installed with `pip install -r .\requirements.txt --extra-index-url https://download.pytorch.org/whl/cu118`
+
+- Frontend requirements can be installed as usual using `npm` or `yarn`
