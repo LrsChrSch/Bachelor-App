@@ -8,7 +8,7 @@ https://drive.google.com/file/d/1AgXs7wMjD3SVlWuRuRHuXHrGYwN9FYCk/view?usp=shari
 
 - all of the images used to train the custom image model are in the `model training images` folder. The model was trained using the following settings:
 
-  |                         |               |
+  | Name                    | Value         |
   | ----------------------- | ------------- |
   | Epochs                  | 8             |
   | Learning Rate           | 1e-05         |
