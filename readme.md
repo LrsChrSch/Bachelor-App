@@ -8,7 +8,7 @@ https://drive.google.com/file/d/1AgXs7wMjD3SVlWuRuRHuXHrGYwN9FYCk/view?usp=shari
 
 - place a huggingface_token.txt in the ai/-folder and add a Huggingface access token to download the Llama-2 model (might need to apply for access)
 
-- all of the images used to train the custom image model are in the `model training images` folder. The model was trained using the following settings:
+- all of the images used to train the custom image model and their descriptions are in the `model training images` folder. The model was trained using the following settings:
 
   | Name                    | Value         |
   | ----------------------- | ------------- |
