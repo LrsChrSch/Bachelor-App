@@ -1,3 +1,5 @@
+![Cover Image](material/CoverImage.png)
+
 ## Image generation model link:
 
 https://drive.google.com/file/d/1AgXs7wMjD3SVlWuRuRHuXHrGYwN9FYCk/view?usp=sharing
