@@ -34,7 +34,7 @@ function rebuild(data: number[][]) {
 	// Update neighbors count to be higher.
 	umap = new UMAP({
 		nComponents: get(dimensions),
-		nNeighbors: Math.floor(data.length / 10 + 1)
+		nNeighbors: Math.min(data.length, 5)
 	});
 
 	const result = umap.fit(data);
@@ -245,6 +245,7 @@ async function getThoughts(className: string) {
 }
 
 function selectThoughtById(id: string) {
+	console.log('Selecting', id);
 	if (id) {
 		const thought = Object.entries(get(publicData)).find(([key, value]) => key === id);
 		if (thought) {

@@ -16,6 +16,7 @@
 	import Home from '$lib/icons/Home.svg?src';
 	import Human from '$lib/icons/Human.svg?src';
 	import Left from '$lib/icons/Left.svg?src';
+	import NavHelp from '$lib/icons/NavHelp.svg?src';
 	import Previous from '$lib/icons/Previous.svg?src';
 	import Rebuild from '$lib/icons/Rebuild.svg?src';
 	import Reply from '$lib/icons/Reply.svg?src';
@@ -54,6 +55,7 @@
 		home: Home,
 		human: Human,
 		left: Left,
+		navHelp: NavHelp,
 		previous: Previous,
 		rebuild: Rebuild,
 		reply: Reply,

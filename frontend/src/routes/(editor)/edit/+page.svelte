@@ -47,7 +47,7 @@
 
 <div class="flex flex-col h-full">
 	<nav
-		class="flex justify-between px-5 py-5 gap-7 sm:px-7 sm:py-6 lg:px-10 md:py-7 bg-neutral-dark backdrop-blur-xl dark:bg-opacity-75 drop-shadow-lg dark:drop-shadow-none pointer-events-auto"
+		class="flex justify-between px-5 py-5 gap-7 sm:px-7 sm:py-6 lg:px-8 md:py-7 bg-neutral-dark backdrop-blur-xl dark:bg-opacity-75 drop-shadow-lg dark:drop-shadow-none pointer-events-auto"
 		bind:clientHeight={navigationHeight}>
 		<IconButton
 			name="home"
@@ -56,7 +56,7 @@
 		<SearchBar />
 	</nav>
 	<section
-		class="[&>*]:pointer-events-auto flex-1 px-5 py-5 pt-3 sm:px-7 sm:py-6 lg:px-10 md:py-7 flex sm:flex-row items-center sm:items-end flex-col gap-5 {!hideHint
+		class="[&>*]:pointer-events-auto flex-1 px-5 py-5 pt-3 sm:px-7 sm:py-6 lg:px-8 md:py-7 flex sm:flex-row items-center sm:items-end flex-col gap-5 {!hideHint
 			? 'justify-between sm:justify-between'
 			: 'justify-end'}">
 		{#if !hideHint}
@@ -79,7 +79,7 @@
 						dimensions.set(3);
 					}
 				}}
-				name={$dimensions === 3 ? 'twoD' : 'threeD'}
+				name={$dimensions === 3 ? 'threeD' : 'twoD'}
 				text={$dimensions === 3 ? 'Wechsel zu 2D' : 'Wechsel zu 3D'} />
 			<IconSquare onClick={() => resetCamera()} name="resetView" text="Kamera reset" />
 			<IconSquare onClick={() => getThoughts('Thought')} name="rebuild" text="UMAP neu berechnen" />

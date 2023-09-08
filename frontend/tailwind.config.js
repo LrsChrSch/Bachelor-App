@@ -42,6 +42,7 @@ export default {
 		borderRadius: {
 			none: '0',
 			sm: '0.125rem',
+			base: '0.25rem',
 			full: '9999px'
 		},
 		extend: {
@@ -55,17 +56,27 @@ export default {
 			// 	prose: '60ch'
 			// }
 			animation: {
-				wiggle: 'wiggle 0.5s ease-in-out'
+				wiggle: 'wiggle 0.5s ease-in-out',
+				fadeIn: 'fadeIn 0.075s ease-in'
 			},
 			keyframes: {
 				wiggle: {
 					'0%, 100%': { transform: 'translate(0,0)' },
 					'25%': { transform: 'translate(-3px,0)' },
 					'50%': { transform: 'translate(3px,0)' }
+				},
+				fadeIn: {
+					'0%': {
+						opacity: 0
+					},
+					'100%': {
+						opacity: 1
+					}
 				}
 			},
 			screens: {
-				xs: '480px'
+				xs: '480px',
+				'3xl': '2560px'
 			}
 		}
 	},
@@ -89,6 +100,14 @@ export default {
 		'fill-five',
 		'fill-six',
 		'fill-human',
+		'hover:fill-accent',
+		'hover:fill-one',
+		'hover:fill-two',
+		'hover:fill-three',
+		'hover:fill-four',
+		'hover:fill-five',
+		'hover:fill-six',
+		'hover:fill-human',
 		'border-accent',
 		'border-one',
 		'border-two',

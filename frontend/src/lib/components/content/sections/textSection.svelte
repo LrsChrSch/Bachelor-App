@@ -4,7 +4,7 @@
 	export let showDots: boolean = true;
 </script>
 
-<section class="content-section">
+<section class="mb-9">
 	{#if heading}
 		<h3 class="w-full">{heading}</h3>
 	{/if}

@@ -1,6 +1,23 @@
 <script lang="ts">
 	import { T, useThrelte, useRender } from '@threlte/core';
 	import {
+		BlendFunction,
+		DepthEffect,
+		DepthPass,
+		EffectComposer,
+		EffectPass,
+		GlitchEffect,
+		GodRaysEffect,
+		GridEffect,
+		KernelSize,
+		NoiseEffect,
+		OutlineEffect,
+		RenderPass,
+		SMAAEffect,
+		SMAAPreset,
+		TiltShiftEffect
+	} from 'postprocessing';
+	import {
 		OrbitControls,
 		Instance,
 		InstancedMesh,
@@ -9,7 +26,16 @@
 		useGltf,
 		useCursor
 	} from '@threlte/extras';
-	import { SphereGeometry, Vector3, Vector2, MeshPhongMaterial, BoxGeometry } from 'three';
+	import {
+		SphereGeometry,
+		Vector3,
+		Vector2,
+		MeshPhongMaterial,
+		BoxGeometry,
+		Camera,
+		FogExp2,
+		Fog
+	} from 'three';
 	import { interactivity } from '@threlte/extras';
 	import { page } from '$app/stores';
 	import { position, target, cam, groundOffset } from '$lib/script/cameraController';
@@ -25,12 +51,45 @@
 	} from '$lib/script/sceneController';
 	import Window from '$lib/components/ui/window.svelte';
 
-	const { camera } = useThrelte();
+	const { scene, camera, renderer, size } = useThrelte();
+
+	const composer = new EffectComposer(renderer);
+
+	const setupEffectComposer = (camera: Camera) => {
+		composer.removeAllPasses();
+		composer.addPass(new RenderPass(scene, camera));
+		composer.addPass(
+			new EffectPass(
+				camera,
+				new TiltShiftEffect({
+					kernelSize: KernelSize.SMALL,
+					focusArea: 0.5,
+
+					resolutionScale: 1
+				})
+			)
+		);
+		composer.addPass(
+			new EffectPass(
+				camera,
+				new SMAAEffect({
+					preset: SMAAPreset.HIGH
+				})
+			)
+		);
+	};
+	$: setupEffectComposer($camera);
+	$: composer.setSize($size.width, $size.height);
+
+	useRender((_, delta) => {
+		composer.render(delta);
+	});
 
 	interactivity();
 
 	onMount(async () => {
 		// set timeout of 300ms
+		//console.log('Models', modelsGltf);
 		await new Promise((r) => setTimeout(r, 300));
 		await getThoughts('Thought');
 	});
@@ -46,27 +105,27 @@
 		return Math.min(Math.max(newValue, newRange[0]), newRange[1]);
 	}
 
-	const modelsGltf = useGltf('/assets/models/shapes.glb');
+	const modelsGltf = useGltf('/assets/models/shapes2.glb');
 
 	const instances = [
 		{
-			node: '2_Information',
+			node: '1',
 			category: 'Information'
 		},
 		{
-			node: '3_Keep',
+			node: '2',
 			category: 'Keep'
 		},
 		{
-			node: '4_Focus',
+			node: '3',
 			category: 'Focus'
 		},
 		{
-			node: '5_Change',
+			node: '4',
 			category: 'Change'
 		},
 		{
-			node: '6_Create',
+			node: '5',
 			category: 'Create'
 		},
 		{
@@ -108,6 +167,8 @@
 	);
 </script>
 
+<svelte:body bind:clientHeight={height} />
+
 <!-- <svelte:window on:resize={() => composer.setSize(window.innerWidth, window.innerHeight)} /> -->
 
 <T.PerspectiveCamera makeDefault position={$position} near={0.01} far={10}>
@@ -119,10 +180,10 @@
 		target={$target} />
 </T.PerspectiveCamera>
 
-<T.DirectionalLight position={[3, 3, 5]} intensity={0.35} />
-<T.PointLight position={[0, groundOffset, 0]} decay={3} />
+<T.DirectionalLight position={[3, 3, 5]} intensity={0.2} />
+<T.PointLight position={[0, groundOffset, 0]} intensity={0.5} decay={3} />
 
-<T.AmbientLight intensity={0.15} />
+<T.AmbientLight intensity={0.2} />
 
 {#if $modelsGltf}
 	<T.Group
@@ -137,9 +198,10 @@
 				frustumCulled={false}
 				position={[0, groundOffset, 0]}
 				geometry={instance.node === 'user'
-					? new SphereGeometry(1, 24, 12)
+					? new SphereGeometry(1, 64, 32)
 					: $modelsGltf.nodes[instance.node].geometry}>
-				<T.MeshStandardMaterial color={colorHelper('--neutral-light')} />
+				<!--  -->
+				<T.MeshStandardMaterial roughness={0.75} color={colorHelper('--neutral-light')} />
 				{#if $publicData}
 					{#each Object.entries($publicData) as [key, value]}
 						{#if value.category === instance.category || (instance.node === 'user' && !value.generated)}
@@ -162,6 +224,10 @@
 										(Math.floor(Math.random() * 4) * Math.PI) / 2
 									]}
 									color={$hovered === key
+										? $showAll
+											? colorHelper('--neutral-light')
+											: colorHelper(getColorName(value.generated, value.category))
+										: $showAll
 										? colorHelper(getColorName(value.generated, value.category))
 										: colorHelper('--neutral-light')}
 									scale={map(value.text.length, [0, 200], [0.01, 0.02])} />
@@ -195,10 +261,10 @@
 							}} />
 						<T.LineBasicMaterial
 							transparent={true}
-							opacity={key === $hovered || $currentThought.id === key ? 1 : $showAll ? 0.5 : 0}
+							opacity={key === $hovered || $currentThought.id === key ? 1 : $showAll ? 0.25 : 0}
 							color={$showAll && !(key === $hovered || $currentThought.id === key)
 								? colorHelper('--neutral-base')
-								: colorHelper('--one')} />
+								: colorHelper('--five')} />
 					</T.Line>
 				{/each}
 				{#each value.lines.out as line}

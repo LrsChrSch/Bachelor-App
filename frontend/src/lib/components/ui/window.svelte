@@ -10,56 +10,63 @@
 	import Icon from '../content/icon.svelte';
 	import { fade, scale } from 'svelte/transition';
 	import { page } from '$app/stores';
+	import SuperImage from '../content/superImage.svelte';
+	import { tick } from 'svelte';
 
 	export let color: string = 'accent';
 
 	let icon = 'bookmark';
+
+	async function init(el) {
+		await tick();
+		el.focus();
+	}
 </script>
 
 {#if $currentThought.text || $currentThought.image}
 	<article
 		transition:scale={{ duration: 150, start: 0.9 }}
-		class="abolute top-1/2 left-1/2 min-w-[384px] max-w-sm bg-neutral-dark dark:bg-opacity-75 drop-shadow-lg dark:drop-shadow-none backdrop-blur-xl {get(
+		class="abolute top-1/2 left-1/2 min-w-[384px] max-w-sm bg-neutral-dark drop-shadow-lg dark:drop-shadow-none backdrop-blur-xl {get(
 			dimensions
 		) === 2
 			? ''
 			: 'scale-[500%]'}">
-		<header
-			class="flex text-neutral-dark p-5 fill-neutral-dark {'bg-' + color} {$currentThought.in
-				.length === 1 || $currentThought.out.length === 1
-				? 'justify-between'
-				: 'justify-end'}">
+		<header class="flex text-neutral-dark p-5 fill-neutral-dark justify-between {'bg-' + color}">
 			<div class="flex gap-5">
-				{#if $currentThought.in.length === 1}
-					<button
-						title="Nach hinten"
-						aria-label="Nach hinten"
-						on:click={() => {
-							selectThoughtById($currentThought.in[0]);
-						}}>
-						<Icon
-							classes="fill-neutral-light hover:fill-neutral-dark dark:fill-neutral-dark"
-							name="previous"
-							size="m" />
-					</button>
-				{/if}
-				{#if $currentThought.out.length === 1 && $currentThought.out[0] !== ''}
-					<button
-						title="Nach vorne"
-						aria-label="Nach vorne"
-						on:click={() => {
-							selectThoughtById($currentThought.out[0]);
-						}}>
-						<Icon
-							classes="rotate-180 fill-neutral-light hover:fill-neutral-dark dark:fill-neutral-dark"
-							name="previous"
-							size="m" />
-					</button>
-				{/if}
+				<button
+					title="Nach hinten"
+					aria-label="Nach hinten"
+					disabled={$currentThought.in.length < 1 || $currentThought.in[0] === ''}
+					class="disabled:opacity-50 focus:ring-transparent"
+					on:click={() => {
+						const randomThoughtIndex = Math.floor(Math.random() * $currentThought.in.length);
+						selectThoughtById($currentThought.in[randomThoughtIndex]);
+					}}>
+					<Icon
+						classes="fill-neutral-light hover:fill-neutral-dark dark:fill-neutral-dark"
+						name="previous"
+						size="m" />
+				</button>
+				<button
+					title="Nach vorne"
+					aria-label="Nach vorne"
+					disabled={$currentThought.out.length < 1 || $currentThought.out[0] === ''}
+					class="disabled:opacity-50 focus:ring-transparent"
+					on:click={() => {
+						console.log($currentThought.out);
+						const randomThoughtIndex = Math.floor(Math.random() * $currentThought.out.length);
+						selectThoughtById($currentThought.out[randomThoughtIndex]);
+					}}>
+					<Icon
+						classes="rotate-180 fill-neutral-light hover:fill-neutral-dark dark:fill-neutral-dark"
+						name="previous"
+						size="m" />
+				</button>
 			</div>
 			<button
-				class=""
+				class="focus:ring-transparent"
 				title="Schließen"
+				use:init
 				on:click={() => {
 					hovered.set('');
 					currentThought.set({});
@@ -71,13 +78,20 @@
 			</button>
 		</header>
 		<main>
-			{#if $currentThought.image}
-				<img
+			<div>
+				{#if $currentThought.image}
+					<SuperImage
+						href="data:image/png;base64,{$currentThought.image}"
+						text={$currentThought.caption}
+						imageClasses="!rounded-t-none"
+						showAlt={false} />
+					<!-- <img
 					class="grayscale-[0.9] hover:grayscale-0 transition-[filter] duration-300"
 					src="data:image/png;base64,{$currentThought.image}"
-					alt={$currentThought.caption} />
-			{/if}
-			<!-- <p>{$currentThought.id}</p> -->
+					alt={$currentThought.caption} /> -->
+				{/if}
+				<!-- <p>{$currentThought.id}</p> -->
+			</div>
 
 			<div class="px-6 py-5">
 				<p class=" text-xs text-neutral-base font-bold whitespace-pre-line">

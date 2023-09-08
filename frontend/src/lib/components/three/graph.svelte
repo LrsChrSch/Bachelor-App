@@ -86,6 +86,15 @@
 	let moving = false;
 
 	let timeDelta = 0;
+
+	function clickData(event: Event, value: any, key: string) {
+		event.preventDefault();
+		const newThought = { ...value, id: key };
+		showNewDialog.set(false);
+		currentThought.set(newThought);
+		dialogX = mouseX;
+		dialogY = mouseY;
+	}
 </script>
 
 <div
@@ -126,7 +135,7 @@
 		}
 	}}
 	on:keydown={() => {
-		console.log('Keydown');
+		//console.log('Keydown');
 	}}
 	class="w-full h-full"
 	bind:clientWidth={width}
@@ -165,6 +174,7 @@
 				{#if key === $hovered || $currentThought.id === key || $showAll}
 					{#each value.lines.in as lines}
 						<path
+							transition:fade={{ duration: 75 }}
 							fill="none"
 							class="transition-colors duration-75
                             {key === $hovered || $currentThought.id === key
@@ -174,12 +184,13 @@
 								: 'opacity-0'}
                             {$showAll && !(key === $hovered || $currentThought.id === key)
 								? 'stroke-neutral-base'
-								: 'stroke-one'}"
+								: 'stroke-five'}"
 							stroke-width={1 * zoom}
 							d={line(lines)} />
 					{/each}
 					{#each value.lines.out as lines}
 						<path
+							transition:fade={{ duration: 75 }}
 							fill="none"
 							class="transition-colors duration-75
                             {$showAll && !(key === $hovered || $currentThought.id === key)
@@ -205,23 +216,13 @@
 					on:mouseleave={() => {
 						hovered.set(null);
 					}}
-					on:click={(e) => {
-						console.log(e);
-						e.preventDefault();
-						console.log('Click');
-						const newThought = { ...value, id: key };
-						showNewDialog.set(false);
-						console.log('asd', newThought);
-						currentThought.set(newThought);
-						dialogX = mouseX;
-						dialogY = mouseY;
-					}}>
+					on:click={(e) => clickData(e, value, key)}
+					on:keypress={(e) => clickData(e, value, key)}>
 					<circle
-						class="{'fill' +
-							getColorName(
-								value.generated,
-								value.category
-							)} hover:fill-neutral-light transition-colors duration-75"
+						class=" {$showAll
+							? 'hover:fill-neutral-light fill' + getColorName(value.generated, value.category)
+							: 'fill-neutral-light hover:fill' +
+							  getColorName(value.generated, value.category)} transition-colors duration-75"
 						cx={x(value.pos[0])}
 						cy={y(value.pos[1])}
 						r={text(value.text.length) * zoom} />

@@ -32,15 +32,15 @@
 		} else if (direction === 'right') {
 			showVisualization.set(false);
 		}
-		console.log(showVisualization);
 	}
 </script>
 
 <div
 	use:swipe={{ timeframe: 300, minSwipeDistance: 100, touchAction: 'pan-y' }}
 	on:swipe={handler}
-	class="md:grid grid-cols-13 grid-rows-1 h-screen overflow-hidden max-h-screen">
-	<main class="col-span-6 lg:col-span-5 h-full">
+	class="md:grid grid-cols-13 3xl:flex w-full grid-rows-1 h-screen overflow-hidden max-h-screen">
+	<main
+		class="col-span-6 lg:col-span-5 3xl:w-full max-w-3xl h-full border-r border-neutral-base border-opacity-20 dark:border-r-0">
 		<slot />
 	</main>
 	<section
@@ -49,12 +49,12 @@
 			: 'left-full md:left-0'}">
 		<div
 			aria-hidden="true"
-			class="hidden md:block w-10 absolute inset-0 bg-gradient-to-r from-neutral-dark to-transparent right-auto h-full pointer-events-none z-10" />
+			class="hidden dark:md:block w-10 absolute inset-0 bg-gradient-to-r from-neutral-dark to-transparent right-auto h-full pointer-events-none z-10" />
 		<Visualization />
 		<div class="absolute inset-0 pointer-events-none">
 			<div class="flex flex-col justify-between items-end h-full [&>*]:pointer-events-auto">
 				<div
-					class="bg-neutral-dark backdrop-blur-xl dark:bg-opacity-75 drop-shadow-lg dark:drop-shadow-none gap-7 px-7 py-6 md:px-6 md:py-5 md:mt-6 2xl:mt-7 md:mr-7 dark:md:mr-4 2xl:mr-9 dark:2xl:mr-[2.5rem] md:w-fit w-full flex justify-between md:justify-end items-center">
+					class="bg-neutral-dark rounded-base backdrop-blur-xl dark:bg-opacity-75 drop-shadow-lg dark:drop-shadow-none gap-7 px-7 py-6 md:px-6 md:py-5 md:mt-6 2xl:mt-7 md:mr-7 dark:md:mr-4 2xl:mr-9 dark:2xl:mr-[2.5rem] md:w-fit w-full flex justify-between md:justify-end items-center">
 					<IconButton
 						name="left"
 						onClick={() => showVisualization.set(false)}
@@ -72,7 +72,7 @@
 								resetCamera();
 							}
 						}}
-						name={$dimensions === 3 ? 'twoD' : 'threeD'}
+						name={$dimensions === 3 ? 'threeD' : 'twoD'}
 						text={$dimensions === 3 ? 'Wechsel zu 2D' : 'Wechsel zu 3D'} />
 
 					<IconSquare

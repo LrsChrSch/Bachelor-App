@@ -15,16 +15,14 @@
 	}
 </script>
 
-<form
-	on:submit={search}
-	class="flex items-center rounded-sm gap-4 sm:gap-6 w-full xs:min-w-[280px] max-w-xs">
+<form on:submit={search} class="flex items-center gap-4 sm:gap-6 w-full xs:min-w-[280px] max-w-xs">
 	<input
 		type="text"
 		bind:value={searchQuery}
 		class="focus-state bg-transparent placeholder:text-neutral-base text-accent font-medium border-b-2 transition-colors duration-75 border-accent w-full"
 		name="search"
 		id="search"
-		placeholder="Suchbegriff oder Frage eingeben" />
+		placeholder="Input search term or question" />
 	<button type="submit" class={found === false ? 'animate-wiggle' : 'animate-none'}>
 		<Icon
 			name="search"

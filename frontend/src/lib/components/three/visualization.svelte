@@ -15,12 +15,15 @@
 </script>
 
 {#if $dbSchema === null}
-	<IconButton
-		onClick={() => reconnect()}
-		name="graph"
-		classes="text-neutral-dark rounded-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent px-5 py-3">
-		Connect DB
-	</IconButton>
+	<div
+		class="w-full h-full bg-neutral-dark absolute inset-0 bg-opacity-75 z-10 backdrop-blur-[2px]">
+		<IconButton
+			onClick={() => reconnect()}
+			name="graph"
+			classes="text-neutral-light fill-neutral-light dark:fill-neutral-dark dark:text-neutral-dark rounded-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent px-5 py-3">
+			DB verbinden
+		</IconButton>
+	</div>
 {/if}
 
 {#if $dimensions === 2}

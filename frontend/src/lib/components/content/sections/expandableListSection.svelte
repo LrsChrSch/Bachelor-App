@@ -12,8 +12,8 @@
 	];
 </script>
 
-<section class="content-section">
-	<div class="mb-5">
+<section>
+	<div class="">
 		{#if heading}
 			<h3>{heading}</h3>
 		{/if}

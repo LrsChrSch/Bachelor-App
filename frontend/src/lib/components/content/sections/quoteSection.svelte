@@ -3,11 +3,11 @@
 	export let heading: string = '';
 </script>
 
-<section class="content-section">
+<section class="mb-9">
 	{#if heading}
 		<h3>{heading}</h3>
 	{/if}
-	<blockquote class="font-serif text-xl leading-relaxed hyphens-auto mb-6" cite={author}>
+	<blockquote class="font-serif text-xl text-justify leading-relaxed hyphens-auto" cite={author}>
 		"<slot />"
 	</blockquote>
 	<p class="text-neutral-base">- {author}</p>
