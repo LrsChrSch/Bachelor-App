@@ -61,19 +61,19 @@
 		composer.addPass(
 			new EffectPass(
 				camera,
-				new TiltShiftEffect({
-					kernelSize: KernelSize.SMALL,
-					focusArea: 0.5,
-
-					resolutionScale: 1
+				new SMAAEffect({
+					preset: SMAAPreset.HIGH
 				})
 			)
 		);
 		composer.addPass(
 			new EffectPass(
 				camera,
-				new SMAAEffect({
-					preset: SMAAPreset.HIGH
+				new TiltShiftEffect({
+					kernelSize: KernelSize.SMALL,
+					focusArea: 0.5,
+
+					resolutionScale: 1
 				})
 			)
 		);
@@ -167,14 +167,12 @@
 	);
 </script>
 
-<svelte:body bind:clientHeight={height} />
-
 <!-- <svelte:window on:resize={() => composer.setSize(window.innerWidth, window.innerHeight)} /> -->
 
 <T.PerspectiveCamera makeDefault position={$position} near={0.01} far={10}>
 	<OrbitControls
 		enableDamping={true}
-		maxDistance={8}
+		maxDistance={7}
 		minDistance={0.1}
 		enableZoom={true}
 		target={$target} />

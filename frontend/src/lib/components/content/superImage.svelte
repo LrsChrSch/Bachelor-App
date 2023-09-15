@@ -40,13 +40,6 @@
 			class="grayscale-0 hover:grayscale duration-300 transition-[filter] w-full object-cover rounded-base border border-neutral-base border-opacity-20 dark:border-0 {imageClasses}" />
 	</button>
 
-	{#if showAlt}
-		<p
-			class="text-left font-condensed text-neutral-base border-dots mt-3 border-l-2 pl-6 group-only:block hidden !my-0 !columns-1">
-			{text}
-		</p>
-	{/if}
-
 	<dialog
 		bind:this={dialog}
 		class="w-full h-full bg-neutral-dark bg-opacity-75 backdrop-blur-md overflow-hidden">

@@ -26,7 +26,7 @@
 		--neutral-base: 140 140 140;
 		--neutral-dark: 9 9 11;
 
-		--one: 100 100 240;
+		--one: 120 120 255;
 		--two: 90 205 190;
 		--three: 240 180 55;
 		--four: 235 110 145;
@@ -95,7 +95,6 @@
 		@apply animate-fadeIn;
 	}
 
-	/* TODO: make sure to active has-selector */
 	.content-section {
 		p {
 			@apply my-8 text-justify gap-6 leading-[1.5];
@@ -142,7 +141,7 @@
 		}
 
 		li {
-			@apply my-6 first:mt-0;
+			@apply my-6 first:mt-0 hyphens-auto;
 		}
 
 		hr {

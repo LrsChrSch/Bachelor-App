@@ -29,15 +29,9 @@ Diese Seite hier ist dagegen zugänglich für alle. Neben diesem inhaltlichen Te
 - Violett: Alle menschlichen Gedanken
 - Dunkelblau: Metakognition (unsichtbar)
 - Cyan: Fakten und Informationen
-- Altrosa: Nutzen von Informationen
+- Gelb: Nutzen von Informationen
 - Rot: Selektion und Fokussierung
 - Orange: Manipulieren und Verändern
 - Grün: Generieren und Erzeugen
 
 Mehr Informationen über die Navigation der Visualisierung findet sich in der Navigationshilfe rechts unter der Überschrift.
-
-<!-- TODO: Gedankenfarben
-
-TODO: umschreiben
-TODO: Bilder einfügen
-TODO: Gedankenmarken einfügen -->

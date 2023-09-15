@@ -198,7 +198,7 @@
 								: 'stroke-six'} 
                                 
                                 {key === $hovered || $currentThought.id === key
-								? 'opacity-100'
+								? 'opacity-75'
 								: 'opacity-0'}"
 							stroke-width={1 * zoom}
 							d={line(lines)} />
