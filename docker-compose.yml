@@ -4,6 +4,7 @@ services:
     build: frontend
     ports:
       - 3000:3000
+    restart: always
   weaviate:
     command:
       - --host
@@ -17,7 +18,7 @@ services:
       - 8080:8080
     volumes:
       - ./weaviate/data:/var/lib/weaviate
-    restart: on-failure:0
+    restart: always
     environment:
       CLIP_INFERENCE_API: "http://multi2vec-clip:8080"
       QNA_INFERENCE_API: "http://qna-transformers:8080"
@@ -32,7 +33,9 @@ services:
     image: semitechnologies/multi2vec-clip:sentence-transformers-clip-ViT-B-32
     environment:
       ENABLE_CUDA: "0"
+    restart: always
   qna-transformers:
     image: semitechnologies/qna-transformers:distilbert-base-uncased-distilled-squad
     environment:
       ENABLE_CUDA: "0"
+    restart: always
