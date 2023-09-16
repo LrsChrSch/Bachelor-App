@@ -399,16 +399,16 @@ async function searchThought(searchStr: string, className: string) {
 		.withClassName(className)
 		.withFields('_additional {id certainty}');
 
-	if (searchStr.endsWith('?')) {
-		console.log('Asking question...');
-		query = query.withAsk({
-			question: searchStr,
-			properties: ['text']
-		});
-	} else {
-		console.log('Searching...');
-		query = query.withNearText({ concepts: [searchStr], distance: 0.6 });
-	}
+	// if (searchStr.endsWith('?')) {
+	// 	console.log('Asking question...');
+	// 	query = query.withAsk({
+	// 		question: searchStr,
+	// 		properties: ['text']
+	// 	});
+	// } else {
+	console.log('Searching...');
+	query = query.withNearText({ concepts: [searchStr], distance: 0.6 });
+	// }
 
 	const result = await query.withLimit(1).do();
 	console.log(result.data.Get[className]);
