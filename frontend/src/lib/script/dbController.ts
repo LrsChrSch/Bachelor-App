@@ -10,16 +10,23 @@ import { get, writable } from 'svelte/store';
 let client: WeaviateClient;
 
 async function connect() {
-	if (dev) {
+	if (import.meta.env.SSR && import.meta.env.PROD) {
 		client = weaviate.client({
 			scheme: 'http',
-			host: 'localhost:8080'
+			host: 'weaviate:8080'
 		});
 	} else {
-		client = weaviate.client({
-			scheme: 'http',
-			host: 'host:8080'
-		});
+		if (dev) {
+			client = weaviate.client({
+				scheme: 'http',
+				host: 'localhost:8080'
+			});
+		} else {
+			client = weaviate.client({
+				scheme: 'http',
+				host: 'host:8080' // change this to hostname of machine
+			});
+		}
 	}
 
 	await refreshSchema();
