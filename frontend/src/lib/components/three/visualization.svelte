@@ -27,11 +27,11 @@
 {/if}
 
 {#if $dimensions === 2}
-	<div class="h-full w-full" in:fade={{ duration: 300, delay: 300 }} out:fade={{ duration: 300 }}>
+	<div class="h-full w-full" in:fade={{ duration: 300, delay: 400 }} out:fade={{ duration: 300 }}>
 		<Graph />
 	</div>
 {:else}
-	<div class="h-full w-full" in:fade={{ duration: 300, delay: 300 }} out:fade={{ duration: 300 }}>
+	<div class="h-full w-full" in:fade={{ duration: 300, delay: 400 }} out:fade={{ duration: 300 }}>
 		<Canvas>
 			<Scene />
 		</Canvas>
