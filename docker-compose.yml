@@ -26,7 +26,7 @@ services:
       AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: "true"
       PERSISTENCE_DATA_PATH: "/var/lib/weaviate"
       DEFAULT_VECTORIZER_MODULE: "multi2vec-clip"
-      ENABLE_MODULES: "multi2vec-clip,qna-transformers,backup-filesystem"
+      ENABLE_MODULES: "multi2vec-clip,backup-filesystem" # qna-transformers
       CLUSTER_HOSTNAME: "node1"
       BACKUP_FILESYSTEM_PATH: "/var/lib/weaviate/backups"
   multi2vec-clip:
