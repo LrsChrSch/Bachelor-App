@@ -22,7 +22,7 @@
 		class="focus-state bg-transparent placeholder:text-neutral-base text-accent font-medium border-b-2 transition-colors duration-75 border-accent w-full"
 		name="search"
 		id="search"
-		placeholder="Input search term or question" />
+		placeholder="Input vector search term" />
 	<button type="submit" class={found === false ? 'animate-wiggle' : 'animate-none'}>
 		<Icon
 			name="search"
