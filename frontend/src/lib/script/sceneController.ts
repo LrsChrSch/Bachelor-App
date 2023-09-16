@@ -243,10 +243,10 @@ async function getThoughts(className: string) {
 	// set currentThought to the thought from publicData with the same id as selectedThought in the form of { ...value, id: key }
 	// timeout 100ms
 
-	await wait(300);
+	//await wait(300);
 
-	selectThoughtById(selectedThought.id);
-	showAll.set(allShown);
+	//selectThoughtById(selectedThought.id);
+	//showAll.set(allShown);
 }
 
 function selectThoughtById(id: string) {
