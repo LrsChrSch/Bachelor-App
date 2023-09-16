@@ -148,6 +148,20 @@ function wait(ms: number) {
 	});
 }
 
+const className = 'Thought';
+const thoughts = await client.graphql
+	.get()
+	.withClassName(className)
+	.withFields(
+		'text image caption category generated in {... on ' +
+			className +
+			' {_additional {id}}} _additional {id vector creationTimeUnix} out {... on ' +
+			className +
+			' {_additional {id}}} _additional {id vector creationTimeUnix}'
+	)
+	.withLimit(10000)
+	.do();
+
 async function getThoughts(className: string) {
 	console.log('Refreshing...', className);
 
@@ -157,19 +171,6 @@ async function getThoughts(className: string) {
 	currentThought.set({});
 	hovered.set('');
 	showAll.set(false);
-
-	const thoughts = await client.graphql
-		.get()
-		.withClassName(className)
-		.withFields(
-			'text image caption category generated in {... on ' +
-				className +
-				' {_additional {id}}} _additional {id vector creationTimeUnix} out {... on ' +
-				className +
-				' {_additional {id}}} _additional {id vector creationTimeUnix}'
-		)
-		.withLimit(10000)
-		.do();
 
 	const extracted = thoughts.data.Get[className];
 
