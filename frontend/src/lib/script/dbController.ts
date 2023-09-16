@@ -3,20 +3,22 @@ import weaviate, {
 	type WeaviateClient,
 	type WeaviateSchema
 } from 'weaviate-ts-client';
+
+import { dev } from '$app/environment';
 import { get, writable } from 'svelte/store';
 
 let client: WeaviateClient;
 
 async function connect() {
-	if (import.meta.env.SSR && import.meta.env.PROD) {
+	if (dev) {
 		client = weaviate.client({
 			scheme: 'http',
-			host: 'weaviate:8080'
+			host: 'localhost:8080'
 		});
 	} else {
 		client = weaviate.client({
 			scheme: 'http',
-			host: 'localhost:8080'
+			host: 'host:8080'
 		});
 	}
 
