@@ -90,7 +90,7 @@
 	onMount(async () => {
 		// set timeout of 300ms
 		//console.log('Models', modelsGltf);
-		await new Promise((r) => setTimeout(r, 300));
+		//await new Promise((r) => setTimeout(r, 300));
 		await getThoughts('Thought');
 	});
 
@@ -199,7 +199,7 @@
 					? new SphereGeometry(1, 64, 32)
 					: $modelsGltf.nodes[instance.node].geometry}>
 				<!--  -->
-				<T.MeshStandardMaterial roughness={0.75} color={colorHelper('--neutral-light')} />
+				<T.MeshStandardMaterial roughness={0.75} />
 				{#if $publicData}
 					{#each Object.entries($publicData) as [key, value]}
 						{#if value.category === instance.category || (instance.node === 'user' && !value.generated)}
@@ -223,11 +223,11 @@
 									]}
 									color={$hovered === key
 										? $showAll
-											? colorHelper('--neutral-light')
+											? colorHelper('--vis-color')
 											: colorHelper(getColorName(value.generated, value.category))
 										: $showAll
 										? colorHelper(getColorName(value.generated, value.category))
-										: colorHelper('--neutral-light')}
+										: colorHelper('--vis-color')}
 									scale={map(value.text.length, [0, 200], [0.01, 0.02])} />
 							{:else}
 								<HTML interactive transform sprite position={value.pos} scale={0.0025}>

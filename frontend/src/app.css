@@ -17,6 +17,8 @@
 	--neutral-base: 82 82 82;
 	--neutral-dark: 250 245 235;
 
+	--vis-color: 82 82 82;
+
 	--scroll-offset: 380px;
 }
 
@@ -25,6 +27,8 @@
 		--neutral-light: 250 250 250;
 		--neutral-base: 140 140 140;
 		--neutral-dark: 9 9 11;
+
+		--vis-color: 250 250 250;
 
 		--one: 120 120 255;
 		--two: 90 205 190;

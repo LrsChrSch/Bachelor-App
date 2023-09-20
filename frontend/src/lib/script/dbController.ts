@@ -24,7 +24,7 @@ async function connect() {
 		} else {
 			client = weaviate.client({
 				scheme: 'http',
-				host: 'host:8080' // change this to hostname of machine
+				host: 'localhost:8080' // TODO: change this to hostname/url of machine when deploying
 			});
 		}
 	}
