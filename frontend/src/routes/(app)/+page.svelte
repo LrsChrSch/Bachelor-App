@@ -57,7 +57,7 @@
 			content: Comparison
 		},
 		{
-			title: 'Von GI zu ASI fehlt eigentlich nur noch das A',
+			title: 'Von GI zu ASI fehlt eisgentlich nur das A',
 			icon: 'combine',
 			summary:
 				'In diesem Kapitel werden Vorschläge eingebracht, wie beide Systeme miteinander kombiniert werden können.',
@@ -65,7 +65,7 @@
 			content: Combination
 		},
 		{
-			title: 'Die Funktionsweise dieser Applikation',
+			title: 'Funktionsweise dieser Applikation',
 			icon: 'websocket',
 			summary:
 				'Als abschließendes Kapitel wird etwas über die Funktionsweise dieser Applikation gesagt.',

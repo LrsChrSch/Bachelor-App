@@ -58,7 +58,7 @@
 	}
 
 	h1 {
-		@apply text-4xl xs:text-6xl sm:text-6xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-accent mb-7 font-sans leading-none overflow-visible hyphens-auto lg:hyphens-none;
+		@apply text-4xl xs:text-6xl sm:text-6xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-accent mb-7 font-sans leading-none overflow-visible hyphens-auto lg:hyphens-none;
 	}
 
 	h2,

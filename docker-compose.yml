@@ -5,6 +5,8 @@ services:
     ports:
       - 3000:3000
     restart: on-failure:0
+    depends_on:
+      - weaviate
   weaviate:
     command:
       - --host
