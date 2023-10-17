@@ -6,7 +6,7 @@ https://drive.google.com/file/d/1AgXs7wMjD3SVlWuRuRHuXHrGYwN9FYCk/view?usp=shari
 
 ## Additional notes
 
-### !!!This project is not being actively maintained. It is for archival purposes only and mustn't be hosted on any public server!!!
+### !!!This project is not actively maintained. It is for archival purposes only and mustn't be hosted on any public server!!!
 
 - place a huggingface_token.txt in the ai/-folder and add a Huggingface access token to download the Llama-2 model (might need to apply for access)
 
